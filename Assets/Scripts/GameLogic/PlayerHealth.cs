@@ -6,8 +6,8 @@ public class PlayerHealth : MonoBehaviour
 
     public int maxHealth = 3;
     public int currentHealth;
-    public int shieldCount = 0;
 
+    public int shieldCount = 0;      
     private void Awake()
     {
         if (Instance == null)
@@ -15,7 +15,6 @@ public class PlayerHealth : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Start game with full HP ONCE
             if (currentHealth == 0)
                 currentHealth = maxHealth;
         }
@@ -28,48 +27,62 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        if (HeartUI.Instance != null)
-            HeartUI.Instance.SetHearts(currentHealth);
-        else
-            Debug.LogWarning("HeartUI.Instance is NULL – UI did not load yet!");
+        HeartUI.Instance?.UpdateHearts(currentHealth, maxHealth, shieldCount);
+        CatAnimationController.Instance?.UpdateHearts(currentHealth);
     }
 
 
     public void TakeDamage(int amount = 1)
     {
-        if(shieldCount > 0)
+        if (shieldCount > 0)
         {
             shieldCount--;
+
             HeartUI.Instance.UpdateHearts(currentHealth, maxHealth, shieldCount);
+            CatAnimationController.Instance.PlayDamageAnimation(); 
             return;
         }
         
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        if (HeartUI.Instance != null)
-            HeartUI.Instance.SetHearts(currentHealth);
+        if (currentHealth > 0)
+            CatAnimationController.Instance.PlayDamageAnimation();
+
+        HeartUI.Instance.UpdateHearts(currentHealth, maxHealth, shieldCount);
+
+        CatAnimationController.Instance.UpdateHearts(currentHealth);
 
         if (currentHealth <= 0)
         {
+            CatAnimationController.Instance.PlayDeathAnimation();
             GameOverManager.Instance.ShowGameOver(GameStats.Instance.score);
         }
-
-        if (ItemManager.Instance.shieldActive)
-        {
-            ItemManager.Instance.shieldActive = false;
-            return;
-        }
     }
 
-    public void ResetHealth()
-    {
-        currentHealth = maxHealth;
-        HeartUI.Instance.SetHearts(currentHealth);
-    }
 
     public void Heal(int amount = 1)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        HeartUI.Instance.SetHearts(currentHealth);
+
+        HeartUI.Instance.UpdateHearts(currentHealth, maxHealth, shieldCount);
+        CatAnimationController.Instance.UpdateHearts(currentHealth);
+    }
+
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        shieldCount = 0;
+
+        HeartUI.Instance.UpdateHearts(currentHealth, maxHealth, shieldCount);
+        CatAnimationController.Instance.UpdateHearts(currentHealth);
+    }
+
+    public void AddShield()
+    {
+        shieldCount = Mathf.Clamp(shieldCount + 1, 0, 3);
+
+        HeartUI.Instance.UpdateHearts(currentHealth, maxHealth, shieldCount);
     }
 }

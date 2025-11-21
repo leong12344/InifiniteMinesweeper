@@ -52,10 +52,6 @@ public class BetweenLevelsUI : MonoBehaviour
             return;
         }
 
-        Debug.Log("GameStats = " + GameStats.Instance);
-        Debug.Log("ItemManager = " + ItemManager.Instance);
-        Debug.Log("Game = " + Game.Instance);
-
 
         GameStats.Instance.AddGold(-item.cost);
         ItemManager.Instance.ApplyItem(item);

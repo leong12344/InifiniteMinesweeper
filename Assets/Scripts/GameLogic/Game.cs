@@ -105,7 +105,6 @@ public class Game : MonoBehaviour
         mineCount = Mathf.Clamp(mineCount, 5, width * height - 5);
 
 
-        Debug.Log($"Starting Level {level}: {width}x{height}, {mineCount} mines");
         NewGame();
     }
 
@@ -124,7 +123,6 @@ public class Game : MonoBehaviour
 
     private void RestartLevel()
     {
-        Debug.Log($"🔁 Restarting Level {currentLevel}");
         StartLevel(currentLevel);
     }
 
@@ -167,7 +165,7 @@ public class Game : MonoBehaviour
     {
         if (cell.revealed || cell.flagged) return;
 
-        revealCountThisClick++;   // <-- count every revealed tile
+        revealCountThisClick++;
 
         switch (cell.type)
         {
@@ -237,12 +235,10 @@ public class Game : MonoBehaviour
 
     private void Chord()
     {
-        // unchord previous cells
         for (int x = 0; x < width; x++)
             for (int y = 0; y < height; y++)
                 grid[x, y].chorded = false;
 
-        // chord new cells
         if (TryGetCellAtMousePosition(out Cell chord))
         {
             for (int dx = -1; dx <= 1; dx++)
