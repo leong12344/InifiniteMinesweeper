@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CatCorner : MonoBehaviour
 {
-    public Vector2 screenOffset = new Vector2(80f, 80f);
+    public Vector2 screenOffset = new Vector2(50f, 50f);
     public Camera cam;
 
     private void Start()
