@@ -34,10 +34,12 @@ public class ItemManager : MonoBehaviour
                 Game.Instance.RevealRandomMine();
                 break;
             case ItemData.ItemType.ScoreMulti:
-                scoreMulti = 2f;
+                scoreMulti += 2f;
+                GameUI.Instance.UpdateScoreMulti(scoreMulti);
                 break;
             case ItemData.ItemType.GoldMulti:
-                goldMulti = 2f;
+                goldMulti += 2f;
+                GameUI.Instance.UpdateGoldMulti(goldMulti);
                 break;
         }
     }

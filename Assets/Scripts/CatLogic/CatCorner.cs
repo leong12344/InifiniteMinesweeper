@@ -20,6 +20,6 @@ public class CatCorner : MonoBehaviour
 
         transform.position = worldPos;
 
-        transform.localScale = Vector3.one;
+        transform.localScale = Vector3.one * 2f;
     }
 }

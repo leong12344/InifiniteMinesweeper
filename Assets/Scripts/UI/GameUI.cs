@@ -8,6 +8,8 @@ public class GameUI : MonoBehaviour
     public TextMeshProUGUI GoldNum;
     public TextMeshProUGUI ScoreNum;
     public TextMeshProUGUI LevelNum;
+    public TextMeshProUGUI ScoreMulti;
+    public TextMeshProUGUI GoldMulti;
 
     private void Awake()
     {
@@ -26,5 +28,14 @@ public class GameUI : MonoBehaviour
     public void UpdateLevel(int value)
     {
         LevelNum.text = value.ToString();
+    }
+    public void UpdateGoldMulti(float value)
+    {
+        GoldMulti.text = "x" + value.ToString();
+    }
+    public void UpdateScoreMulti(float value)
+    {
+        ScoreMulti.text = "x" + value.ToString();
+
     }
 }
