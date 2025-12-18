@@ -40,10 +40,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Load saved volumes
         LoadVolumes();
 
-        // Setup sliders
         if (musicSlider != null)
         {
             musicSlider.value = musicSource.volume;
@@ -56,8 +54,6 @@ public class AudioManager : MonoBehaviour
             sfxSlider.onValueChanged.AddListener(SetSFXVolume);
         }
     }
-
-    // -------------------- MUSIC --------------------
 
     public void PlayMusicForLevel(int level)
     {
@@ -93,8 +89,6 @@ public class AudioManager : MonoBehaviour
         return index;
     }
 
-    // -------------------- SFX --------------------
-
     public void PlayClick() => PlaySFX(clickSFX);
     public void PlayReveal() => PlaySFX(revealSFX);
     public void PlayExplosion() => PlaySFX(explosionSFX);
@@ -105,9 +99,6 @@ public class AudioManager : MonoBehaviour
 
         sfxSource.PlayOneShot(clip);
     }
-
-    // -------------------- VOLUME --------------------
-
     public void SetMusicVolume(float value)
     {
         musicSource.volume = value;
