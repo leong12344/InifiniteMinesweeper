@@ -36,6 +36,5 @@ public class GameUI : MonoBehaviour
     public void UpdateScoreMulti(float value)
     {
         ScoreMulti.text = "x" + value.ToString();
-
     }
 }
