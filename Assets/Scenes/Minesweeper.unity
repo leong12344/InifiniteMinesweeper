@@ -2406,7 +2406,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 1.4299927, y: 1.5400085}
+=======
+  m_AnchoredPosition: {x: 1.4299927, y: 1.539978}
+>>>>>>> d7f70edb89bf6dc7ff4b4d8067d79713100bf464
   m_SizeDelta: {x: 1.4299927, y: 1.5399933}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &364529069
@@ -2421,7 +2425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e70f6579b225fa4f8f45aeb98590db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenOffset: {x: 80, y: 80}
+  screenOffset: {x: 50, y: 50}
   cam: {fileID: 519420031}
 --- !u!114 &364529070
 MonoBehaviour:
@@ -3904,7 +3908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3925,7 +3929,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3934,7 +3938,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
+  m_UpdateRectTransformForStandalone: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5878,7 +5882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
